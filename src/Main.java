@@ -3,22 +3,34 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
 
+    static ArrayList<String> words;
+
     public static void main(String[] args) {
 
-        ArrayList<String> words = readFile();
+        words = readFile();
+        Scanner scanner = new Scanner(System.in);
+        String tryAgain = "";
+        while (tryAgain != "NO") {
+            startGame();
+            System.out.println("PLAY AGAIN?");
+            System.out.print("> ");
+            tryAgain = scanner.nextLine().toUpperCase();
+        }
 
+    }
+
+    public static void startGame() {
         boolean found = false;
+        Scanner scanner = new Scanner(System.in);
         String guess = "";
         String wordToGuess = words.get((int)(Math.random() * words.size()));
         String[] lettersGuessed = new String[wordToGuess.length()];
         int letters = wordToGuess.length();
-
-
-        Scanner scanner = new Scanner(System.in);
 
         for (int i = 0; i < lettersGuessed.length; i++) {
             if (wordToGuess.charAt(i) == ' ') {
@@ -84,7 +96,6 @@ public class Main {
         System.out.println("=====================");
         System.out.println(">>>>>  YOU WIN  <<<<<");
         System.out.println("=====================");
-
     }
 
     public static ArrayList<String> readFile() {
