@@ -40,7 +40,10 @@ public class Main {
             }
             System.out.println();
 
+            System.out.print("> ");
             guess = scanner.nextLine();
+
+            // input inválido
             if (guess.equals(null) || guess.equals("")) {
                 continue;
             }
@@ -50,7 +53,7 @@ public class Main {
                 if (guess.equals(wordToGuess)) {
                     break;
                 }
-                System.out.println("Failed to guess word");
+                System.err.println("Failed to guess word");
                 continue;
             }
 
@@ -78,7 +81,10 @@ public class Main {
             }
         }
 
-        System.out.println(wordToGuess);
+        System.out.println("=====================");
+        System.out.println(">>>>>  YOU WIN  <<<<<");
+        System.out.println("=====================");
+
     }
 
     public static ArrayList<String> readFile() {
