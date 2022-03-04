@@ -7,13 +7,21 @@ public class Main {
         String guess = "";
         String word = "picha";
         int letters = word.length();
+        String[] lettersGuessed = new String[word.length()];
+        boolean found = false;
+        //P I C H A
+        //_ _ _ _ _
+        //_ _ _ H _
 
         Scanner scanner = new Scanner(System.in);
 
-
-        System.out.println("WORD TO GUESS: " + letters);
+        for (int i = 0; i < lettersGuessed.length; i++) {
+            lettersGuessed[i] = "_";
+            System.out.print(lettersGuessed[i] + " ");
+        }
 
         while (letters != 0) {
+            found = false;
             guess = scanner.nextLine();
 
             if (guess.length() > 1) {
@@ -25,12 +33,28 @@ public class Main {
             }
 
             if (word.indexOf(guess) > -1) {
-                System.out.println("Found a letter");
-                letters--;
-            } 
+                for (int i = 0; i < lettersGuessed.length; i++) {
+                    if (lettersGuessed[i].equals(guess)) {
+                        System.out.println("JA ENCONTRASTE ESSA LETRA BURRO");
+                        found = true;
+                    }
+                }
+
+                if (!found) {
+                    lettersGuessed[word.indexOf(guess)] = guess;
+                    letters--;
+                }
+
+                for (int i = 0; i < lettersGuessed.length; i++) {
+                    System.out.print(lettersGuessed[i] + " ");
+                }
+
+                System.out.println();
+            }
         }
 
         System.out.println("YOU WIN");
     }
+
 
 }
