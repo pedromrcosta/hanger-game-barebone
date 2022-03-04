@@ -20,7 +20,7 @@ classes
 input
 output
 network
-word wide web
+world wide web
 concurrent programming
 documentation
 conventions
